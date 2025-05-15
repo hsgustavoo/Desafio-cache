@@ -1,0 +1,19 @@
+CREATE DATABASE desafio_backend;
+
+USE desafio_backend;
+
+CREATE TABLE clientes (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(100) NOT NULL,
+  sobrenome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  idade INT
+);
+
+CREATE TABLE produtos (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  descricao VARCHAR(255),
+  preco DECIMAL(10,2) NOT NULL,
+  data_atualizado DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

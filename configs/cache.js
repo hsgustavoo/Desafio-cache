@@ -1,4 +1,5 @@
 const NodeCache = require('node-cache');
-const cache = new NodeCache({ stdTTL: 30 }); // Cache expira em 30 segundos
+
+const cache = new NodeCache({ stdTTL: 30, checkperiod: 1 });
 
 module.exports = cache;

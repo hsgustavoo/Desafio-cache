@@ -4,6 +4,7 @@ const createError = require('http-errors');
 const requestLogger = require('./middlewares/logging');
 const clientesRoutes = require('./routes/clientesRoutes');
 const produtosRoutes = require('./routes/produtosRoutes');
+const usuariosRoutes = require('./routes/usuariosRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,8 +18,10 @@ app.get('/', (req, res) => {
   res.json({ message: 'API ativa' });
 });
 
-app.use('/clientes', clientesRoutes);
+const autenticar = require('./middlewares/auth');
+app.use('/clientes', autenticar, clientesRoutes);
 app.use('/produtos', produtosRoutes);
+app.use('/usuarios', usuariosRoutes);
 
 // Tratamento de erros
 app.use((req, res, next) => {
